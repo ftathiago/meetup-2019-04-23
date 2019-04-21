@@ -1,0 +1,60 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{33F83847-638E-437B-94A1-256297E01FE3}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="ProjetoSemAspecto\ProjetoSemAspecto.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="ProjetoComAspecto\ProjetoComAspecto.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="..\..\EmbarcaderoConference2018\3-2-Eleve-o-n-vel-de-sua-arquitetura-com-DELPHI-AOP\AlterandoComponentesLimitacoes\AlterandoComponentesLimitacoes.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="ProjetoSemAspecto">
+        <MSBuild Projects="ProjetoSemAspecto\ProjetoSemAspecto.dproj"/>
+    </Target>
+    <Target Name="ProjetoSemAspecto:Clean">
+        <MSBuild Projects="ProjetoSemAspecto\ProjetoSemAspecto.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ProjetoSemAspecto:Make">
+        <MSBuild Projects="ProjetoSemAspecto\ProjetoSemAspecto.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="ProjetoComAspecto">
+        <MSBuild Projects="ProjetoComAspecto\ProjetoComAspecto.dproj"/>
+    </Target>
+    <Target Name="ProjetoComAspecto:Clean">
+        <MSBuild Projects="ProjetoComAspecto\ProjetoComAspecto.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ProjetoComAspecto:Make">
+        <MSBuild Projects="ProjetoComAspecto\ProjetoComAspecto.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="AlterandoComponentesLimitacoes">
+        <MSBuild Projects="..\..\EmbarcaderoConference2018\3-2-Eleve-o-n-vel-de-sua-arquitetura-com-DELPHI-AOP\AlterandoComponentesLimitacoes\AlterandoComponentesLimitacoes.dproj"/>
+    </Target>
+    <Target Name="AlterandoComponentesLimitacoes:Clean">
+        <MSBuild Projects="..\..\EmbarcaderoConference2018\3-2-Eleve-o-n-vel-de-sua-arquitetura-com-DELPHI-AOP\AlterandoComponentesLimitacoes\AlterandoComponentesLimitacoes.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="AlterandoComponentesLimitacoes:Make">
+        <MSBuild Projects="..\..\EmbarcaderoConference2018\3-2-Eleve-o-n-vel-de-sua-arquitetura-com-DELPHI-AOP\AlterandoComponentesLimitacoes\AlterandoComponentesLimitacoes.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="ProjetoSemAspecto;ProjetoComAspecto;AlterandoComponentesLimitacoes"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="ProjetoSemAspecto:Clean;ProjetoComAspecto:Clean;AlterandoComponentesLimitacoes:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="ProjetoSemAspecto:Make;ProjetoComAspecto:Make;AlterandoComponentesLimitacoes:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
